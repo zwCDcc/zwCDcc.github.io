@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CD</title>
+    <title>过去的CD</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="zwCDcc,"> 
     
-    <meta name="author" content="John Doe"> 
-    <link rel="alternative" href="atom.xml" title="CD" type="application/atom+xml"> 
+    
+    <link rel="alternative" href="atom.xml" title="过去的CD" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <link rel="stylesheet" href="/css/diaspora.css">
@@ -55,10 +55,16 @@
             <h3 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h3><ol>
 <li><a href="#What-is-Machine-Learning">What is Machine Learning?</a></li>
 <li><a href="#Model-Representation">Model Representation</a>  </li>
-<li><a href="#Cost-Function">Cost Function</a></li>
-<li><a href="#Gradient-Descent">Gradient Descent</a>  </li>
+<li><a href="#Supervised-Learning">Supervised Learning</a>  <ol>
+<li><a href="#Linear-Regression">Linear Regression</a>  </li>
+<li><a href="#Logistic-Regression">Logistic Regression</a>  </li>
+<li><a href="#Feature-Scaling">Feature Scaling</a>  </li>
+<li><a href="#Normal-Equation">Normal Equation</a></li>
 </ol>
-<h4 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h4><p><a href="#Catalog">Catalog</a>  </p>
+</li>
+<li><a href="#Unspervised-Learning">Unspervised Learning</a></li>
+</ol>
+<h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h3><p><a href="#Catalog">Catalog</a>  </p>
 <blockquote>
 <p>DEFINITION:”A computer program is said to learn from experience E respect to some class of tasks T and performance measure P, if its performance at task in T, as measure by P, improves with experience E.”  </p>
 <blockquote>
@@ -73,9 +79,78 @@
 <p>Clustering: Take a collection of 1,000,000 different genes, and find a way to automatically group these genes into groups that are somehow similar or related by different variables, such as lifespan, location, roles, and so on.<br>Non-clustering: The “Cocktail Party Algorithm”, allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).  </p>
 </blockquote>
 </blockquote>
-<h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p><a href="#Catalog">Catalog</a><br><img src="/img/ml/21.png" alt="/img/ml/21.png">  </p>
-<h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><p><a href="#Catalog">Catalog</a><br><img src="/img/ml/31.png" alt="/img/ml/21.png">  </p>
-<h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p><a href="#Catalog">Catalog</a><br><img src="/img/ml/41.png" alt="/img/ml/21.png">  </p>
+<h3 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h3><p><a href="#Catalog">Catalog</a>  </p>
+<blockquote>
+<p><img src="/img/ml/module.png" alt="/img/ml/module.png">  </p>
+</blockquote>
+<h3 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
+<h4 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h4><blockquote>
+<p><em>Cost Function</em>  </p>
+<blockquote>
+<p><img src="/img/ml/hthetaL.png" alt="/img/ml/hthetaL.png"><br><img src="/img/ml/costf.png" alt="/img/ml/costf.png">  </p>
+</blockquote>
+<p><em>Gradient Descent</em>   </p>
+<blockquote>
+<p><img src="/img/ml/singlegrid.png" alt="/img/ml/singlegrid.png"><br><img src="/img/ml/mulgrid.png" alt="/img/ml/mulgrid.png">  </p>
+<ul>
+<li>For sufficiently small α, J(θ) should decrease on every iteration.  </li>
+<li>But if α is too small, gradient descent can be slow to converge.  </li>
+</ul>
+</blockquote>
+</blockquote>
+<h4 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h4><blockquote>
+<p><em>Cost Function</em>  </p>
+<blockquote>
+<p><img src="/img/ml/hthetaC.png" alt="/img/ml/hthetaC.png"><br><img src="/img/ml/hthetaC3.png" alt="/img/ml/hthetaC3.png"><br><img src="/img/ml/hthetaC2.png" alt="/img/ml/hthetaC2.png"><br><img src="/img/ml/hthetaC4.png" alt="/img/ml/hthetaC4.png"><br><img src="/img/ml/hthetaC5.png" alt="/img/ml/hthetaC5.png"><br>We can fully write out entire cost function as follows:<br><img src="/img/ml/hthetaC6.png" alt="/img/ml/hthetaC6.png"><br>A vertorized implementation is:<br><img src="/img/ml/hthetaC7.png" alt="/img/ml/hthetaC7.png">  </p>
+</blockquote>
+<p><em>Decision Boundary</em>  </p>
+<blockquote>
+<p>In order to get our discrete 0 or 1 classification, we can translate the output of the hypothesis function as follows:<br><img src="/img/ml/decisionboundary.png" alt="/img/ml/decisionboundary.png">  </p>
+</blockquote>
+<p><em>Gradient Descent</em>  </p>
+<blockquote>
+<p>The general form of gradient descent is:<br><img src="/img/ml/gridC.png" alt="/img/ml/gridC.png"><br>We can work out the derivative part using calculus to get:<br><img src="/img/ml/gridC2.png" alt="/img/ml/gridC2.png"><br>A vectorized implementation is:<br><img src="/img/ml/gridC3.png" alt="/img/ml/gridC3.png">  </p>
+</blockquote>
+</blockquote>
+<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h4><p><a href="#Catalog">Catalog</a>  </p>
+<blockquote>
+<p><img src="/img/ml/FeatureScaling.png" alt="/img/ml/FeatureScaling.png"><br>Where Ui is the <strong>average</strong> of all the values for feature(i) and Si is the <strong>range</strong> of values(max-min), or Si is the <strong>standard deviation</strong>.  </p>
+</blockquote>
+<h4 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h4><blockquote>
+<p><img src="/img/ml/NormalEquation.png" alt="/img/ml/NormalEquation.png"><br>The following is a comparison of gradient descent and normal equation  </p>
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Second Header    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Need to choose alpha</td>
+<td>No need to choose alpha  </td>
+</tr>
+<tr>
+<td>Need many iterations</td>
+<td>No need to iterate  </td>
+</tr>
+<tr>
+<td>O(kn²)</td>
+<td>O(n³), need to calculate inverse of X’X  </td>
+</tr>
+<tr>
+<td>Works well when n is large</td>
+<td>Slow if n is very large  </td>
+</tr>
+</tbody>
+</table>
+<p>If X’X is <strong>noninvertible</strong>, the commom causes might be having:  </p>
+<ul>
+<li>Redundant features, where two features are very closely related(i.e. they are linearly dependent)  </li>
+<li>Too many features(e.g. m ≤ n). In this case, delete some features or use “regularization”.  </li>
+</ul>
+</blockquote>
+<h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
