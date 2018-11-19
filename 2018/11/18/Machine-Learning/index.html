@@ -59,10 +59,11 @@
 <li><a href="#Linear-Regression">Linear Regression</a>  </li>
 <li><a href="#Logistic-Regression">Logistic Regression</a>  </li>
 <li><a href="#Feature-Scaling">Feature Scaling</a>  </li>
-<li><a href="#Normal-Equation">Normal Equation</a></li>
+<li><a href="#Normal-Equation">Normal Equation</a>  </li>
+<li><a href="#Advanced-Optimization">Advanced Optimization</a></li>
 </ol>
 </li>
-<li><a href="#Unspervised-Learning">Unspervised Learning</a></li>
+<li><a href="#Unsupervised-Learning">Unsupervised Learning</a></li>
 </ol>
 <h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h3><p><a href="#Catalog">Catalog</a>  </p>
 <blockquote>
@@ -150,6 +151,15 @@
 <li>Too many features(e.g. m ≤ n). In this case, delete some features or use “regularization”.  </li>
 </ul>
 </blockquote>
+<h4 id="Advanced-Optimization"><a href="#Advanced-Optimization" class="headerlink" title="Advanced Optimization"></a>Advanced Optimization</h4><pre><code class="octave">function [jVal, gradient] = costFunction(theta)
+  jVal = [...code to compute J(theta)...];
+  gradient = [...code to compute derivative of J(theta)...];
+end
+options = optimset(&apos;GradObj&apos;, &apos;on&apos;, &apos;MaxIter&apos;, 100);
+initialTheta = zeros(2,1);
+   [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
+
+</code></pre>
 <h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
