@@ -57,13 +57,17 @@
 <li><a href="#Model-Representation">Model Representation</a>  </li>
 <li><a href="#Supervised-Learning">Supervised Learning</a>  <ol>
 <li><a href="#Linear-Regression">Linear Regression</a>  </li>
-<li><a href="#Logistic-Regression">Logistic Regression</a>  </li>
+<li><a href="#Logistic-Regression">Logistic Regression</a>  <ol>
 <li><a href="#Feature-Scaling">Feature Scaling</a>  </li>
 <li><a href="#Normal-Equation">Normal Equation</a>  </li>
-<li><a href="#Advanced-Optimization">Advanced Optimization</a></li>
+<li><a href="#Advanced-Optimization">Advanced Optimization</a>  </li>
+<li><a href="#Regularization">Regularization</a>  </li>
 </ol>
 </li>
-<li><a href="#Unsupervised-Learning">Unsupervised Learning</a></li>
+<li><a href="#Neural-Networks">Neural Networks</a>  </li>
+</ol>
+</li>
+<li><a href="#Unsupervised-Learning">Unsupervised Learning</a>  </li>
 </ol>
 <h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h3><p><a href="#Catalog">Catalog</a>  </p>
 <blockquote>
@@ -98,6 +102,10 @@
 <li>But if α is too small, gradient descent can be slow to converge.  </li>
 </ul>
 </blockquote>
+<p><em>Multicle</em>  </p>
+<blockquote>
+<p>same  </p>
+</blockquote>
 </blockquote>
 <h4 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h4><blockquote>
 <p><em>Cost Function</em>  </p>
@@ -112,18 +120,26 @@
 <blockquote>
 <p>The general form of gradient descent is:<br><img src="/img/ml/gridC.png" alt="/img/ml/gridC.png"><br>We can work out the derivative part using calculus to get:<br><img src="/img/ml/gridC2.png" alt="/img/ml/gridC2.png"><br>A vectorized implementation is:<br><img src="/img/ml/gridC3.png" alt="/img/ml/gridC3.png">  </p>
 </blockquote>
+<p><em>Multicle</em>  </p>
+<blockquote>
+<p><img src="/img/ml/gridCmul1.png" alt="/img/ml/gridCmul1.png"><br><strong>To summarize:</strong>  </p>
+<ul>
+<li>Train a logistic regression classifier hθ(x) for each to predict the probability of y=i.  </li>
+<li>To make a prediction on a new x, pick the class that maximizes hθ(x).  </li>
+</ul>
 </blockquote>
-<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h4><p><a href="#Catalog">Catalog</a>  </p>
+</blockquote>
+<h5 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h5><p><a href="#Catalog">Catalog</a>  </p>
 <blockquote>
 <p><img src="/img/ml/FeatureScaling.png" alt="/img/ml/FeatureScaling.png"><br>Where Ui is the <strong>average</strong> of all the values for feature(i) and Si is the <strong>range</strong> of values(max-min), or Si is the <strong>standard deviation</strong>.  </p>
 </blockquote>
-<h4 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h4><blockquote>
+<h5 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h5><blockquote>
 <p><img src="/img/ml/NormalEquation.png" alt="/img/ml/NormalEquation.png"><br>The following is a comparison of gradient descent and normal equation  </p>
 <table>
 <thead>
 <tr>
 <th>Gradient Descent</th>
-<th>Second Header    </th>
+<th>Normal Equation  </th>
 </tr>
 </thead>
 <tbody>
@@ -151,16 +167,33 @@
 <li>Too many features(e.g. m ≤ n). In this case, delete some features or use “regularization”.  </li>
 </ul>
 </blockquote>
-<h4 id="Advanced-Optimization"><a href="#Advanced-Optimization" class="headerlink" title="Advanced Optimization"></a>Advanced Optimization</h4><pre><code class="octave">function [jVal, gradient] = costFunction(theta)
+<h5 id="Advanced-Optimization"><a href="#Advanced-Optimization" class="headerlink" title="Advanced Optimization"></a>Advanced Optimization</h5><blockquote>
+<p>For linear and logistic</p>
+<pre><code class="octave">function [jVal, gradient] = costFunction(theta)
   jVal = [...code to compute J(theta)...];
   gradient = [...code to compute derivative of J(theta)...];
 end
 options = optimset(&apos;GradObj&apos;, &apos;on&apos;, &apos;MaxIter&apos;, 100);
 initialTheta = zeros(2,1);
    [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
-
 </code></pre>
-<h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
+</blockquote>
+<h5 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h5><blockquote>
+<p>We will modify your gradient descent function to separate out θ(0) from the rest of parameters because we do not want to penalize θ(0).  </p>
+<p><em>Regularized Linear Regression</em>  </p>
+<blockquote>
+<p><img src="/img/ml/reglinearcost.png" alt="/img/ml/reglinearcost.png"><br><img src="/img/ml/reglineargrid.png" alt="/img/ml/reglineargrid.png">  </p>
+</blockquote>
+<p><em>Regularized Logistic Regression</em>  </p>
+<blockquote>
+<p><img src="/img/ml/reglogisticcost.png" alt="/img/ml/reglogisticcost.png"><br><img src="/img/ml/reglogisticgrid.png" alt="/img/ml/reglogisticgrid.png">  </p>
+</blockquote>
+<p><em>Regularized Normal Equation</em>  </p>
+<blockquote>
+<p><img src="/img/ml/regnormalequ.png" alt="/img/ml/regnormalequ.png">  </p>
+</blockquote>
+</blockquote>
+<h4 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h4><h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
