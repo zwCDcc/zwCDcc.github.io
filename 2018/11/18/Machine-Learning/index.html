@@ -53,21 +53,30 @@
         </div>
         <div class="content markdown">
             <h3 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h3><ol>
-<li><a href="#What-is-Machine-Learning">What is Machine Learning?</a></li>
+<li><a href="#What-is-Machine-Learning">What is Machine Learning?</a>  </li>
 <li><a href="#Model-Representation">Model Representation</a>  </li>
 <li><a href="#Supervised-Learning">Supervised Learning</a>  <ol>
 <li><a href="#Linear-Regression">Linear Regression</a>  </li>
-<li><a href="#Logistic-Regression">Logistic Regression</a>  <ol>
+<li><a href="#Logistic-Regression">Logistic Regression</a>  </li>
+<li><a href="#Neural-Networks">Neural Networks</a>  </li>
+<li><a href="#Support-Vector-Machines">Support Vector Machines</a>  </li>
+</ol>
+</li>
+<li><a href="#Unsupervised-Learning">Unsupervised Learning</a>  <ol>
+<li><a href="#Clustering">Clustering</a>  </li>
+<li><a href="#Dimensionality-Reduction">Dimensionality Reduction</a>  </li>
+<li><a href="#Anomaly-Detection">Anomaly Detection</a>  </li>
+<li><a href="#Recommender-System">Recommender System</a>  </li>
+</ol>
+</li>
+<li><a href="#The-Operation-Of-Optimize">The Operation Of Optimize</a>  <ol>
 <li><a href="#Feature-Scaling">Feature Scaling</a>  </li>
 <li><a href="#Normal-Equation">Normal Equation</a>  </li>
 <li><a href="#Advanced-Optimization">Advanced Optimization</a>  </li>
 <li><a href="#Regularization">Regularization</a>  </li>
 </ol>
 </li>
-<li><a href="#Neural-Networks">Neural Networks</a>  </li>
-</ol>
-</li>
-<li><a href="#Unsupervised-Learning">Unsupervised Learning</a>  </li>
+<li><a href="#Advice">Advice</a>  </li>
 </ol>
 <h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h3><p><a href="#Catalog">Catalog</a>  </p>
 <blockquote>
@@ -129,8 +138,76 @@
 </ul>
 </blockquote>
 </blockquote>
-<h5 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h5><p><a href="#Catalog">Catalog</a>  </p>
+<h4 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h4><blockquote>
+<p><em>Model Representation</em>  </p>
 <blockquote>
+<p>Algorithms that try to mimic the brain. In our moudel, our dendrites are like the input features X1…Xn, and the output is the result of our hypothesis function. In this moudel our X0 input node is sometimes called “bais unit”. It is always eaqual to 1. In neural networks, we use the same logistic function as in classfication, we sometimes called it a sigmoid activation function.<br><img src="/img/ml/nnmodel1.png" alt="/img/ml/nnmodel1.png"><br><img src="/img/ml/nnmodel2.png" alt="/img/ml/nnmodel2.png">  </p>
+</blockquote>
+<p><em>Vectorized Implementation</em>  </p>
+<blockquote>
+<p><img src="/img/ml/nnvec1.png" alt="/img/ml/nnvec1.png"><br><img src="/img/ml/nnvec2.png" alt="/img/ml/nnvec2.png">  </p>
+</blockquote>
+<p><em>Examples of Application</em>  </p>
+<blockquote>
+<p>A simple example of applying neural networks is predicting X1 AND X2.<br>Theta(1) = [-30 20 20]<br><img src="/img/ml/nnapl1.png" alt="/img/ml/nnapl1.png"><br>And there we have the XNOR operator using a hidden layer with two nodes!<br><img src="/img/ml/nnapl2.png" alt="/img/ml/nnapl2.png">  </p>
+</blockquote>
+<p><em>Multiclass</em>  </p>
+<blockquote>
+<p><img src="/img/ml/nnmul1.png" alt="/img/ml/nnmul1.png">  </p>
+</blockquote>
+<p><em>Cost Function</em>  </p>
+<blockquote>
+<ul>
+<li>L = total nummber of layers in network  </li>
+<li>Sl = nummber of units(not counting bais unit)in layer l  </li>
+<li>K = nummber of output classes<br><img src="/img/ml/nncost1.png" alt="/img/ml/nncost1.png">  </li>
+</ul>
+</blockquote>
+<p><em>Backpropagation Algorithm</em>  </p>
+<blockquote>
+<p><img src="/img/ml/nnbackp1.png" alt="/img/ml/nnbackp1.png"><br><img src="/img/ml/nnbackp2.png" alt="/img/ml/nnbackp2.png">  </p>
+</blockquote>
+<p><em>Unrolling Parameters</em>  </p>
+<blockquote>
+<p><img src="/img/ml/nnunroll1.png" alt="/img/ml/nnunroll1.png"><br><img src="/img/ml/nnunroll2.png" alt="/img/ml/nnunroll2.png">  </p>
+</blockquote>
+<p><em>Gradient Checking</em>  </p>
+<blockquote>
+<p><img src="/img/ml/nncheck1.png" alt="/img/ml/nncheck1.png">  </p>
+</blockquote>
+<p><em>Random Initialization</em>  </p>
+<blockquote>
+<p><img src="/img/ml/nnrandom1.png" alt="/img/ml/nnrandom1.png">  </p>
+</blockquote>
+<p><em>Summarize</em>  </p>
+<blockquote>
+<p>First, pick a network architecture; choose the layout of your neural network, including how many units in each layer and how many layers in total you want to have.  </p>
+<ul>
+<li>Nummber of input units = dimension of features X(i)  </li>
+<li>Nummber of output units = nummber of calsses  </li>
+<li>Nummber of hidden units per layer = usually more the better  </li>
+<li>Defaults: 1 hidden layer. If you have more than 1 hidden layer, then it id recommended that you have the same nummber of units in every didden layer.<br>Training a Neural Network  <blockquote>
+<p>1.Randomly initialize the weights(Theta)<br>2.Implement forward propagation to get output for any input<br>3.Implement cost function<br>4.Implement backpropagation to compute partial derivatives<br>5.Use gradient Checking to confirm that your backpropagation works. Then disable gradient checking.<br>6.Use gradient descent or a built-in opatimization function to minimize the cost function with the weights in theta.  </p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h4 id="Support-Vector-Machines"><a href="#Support-Vector-Machines" class="headerlink" title="Support Vector Machines"></a>Support Vector Machines</h4><h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
+<h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><blockquote>
+<p>K-Means  </p>
+</blockquote>
+<h4 id="Dimensionality-Reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a>Dimensionality Reduction</h4><blockquote>
+<p>Principal Conponent Analysis  </p>
+</blockquote>
+<h4 id="Anomaly-Detection"><a href="#Anomaly-Detection" class="headerlink" title="Anomaly Detection"></a>Anomaly Detection</h4><blockquote>
+<p>Gaussian Distribution  </p>
+</blockquote>
+<h4 id="Recommender-System"><a href="#Recommender-System" class="headerlink" title="Recommender System"></a>Recommender System</h4><blockquote>
+<p>Collaborative Filtering  </p>
+</blockquote>
+<h3 id="The-Operation-Of-Optimize"><a href="#The-Operation-Of-Optimize" class="headerlink" title="The Operation Of Optimize"></a>The Operation Of Optimize</h3><p><a href="#Catalog">Catalog</a>  </p>
+<h5 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h5><blockquote>
 <p><img src="/img/ml/FeatureScaling.png" alt="/img/ml/FeatureScaling.png"><br>Where Ui is the <strong>average</strong> of all the values for feature(i) and Si is the <strong>range</strong> of values(max-min), or Si is the <strong>standard deviation</strong>.  </p>
 </blockquote>
 <h5 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h5><blockquote>
@@ -193,10 +270,10 @@ initialTheta = zeros(2,1);
 <p><img src="/img/ml/regnormalequ.png" alt="/img/ml/regnormalequ.png">  </p>
 </blockquote>
 </blockquote>
-<h4 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h4><h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p><a href="#Catalog">Catalog</a>  </p>
+<h3 id="Advice"><a href="#Advice" class="headerlink" title="Advice"></a>Advice</h3><p><a href="#Catalog">Catalog</a>  </p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="/music/ml.mp3">
             </audio>
             
